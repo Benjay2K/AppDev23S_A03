@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var activity2Button: Button
     private lateinit var startMusic: Button
     private lateinit var stopMusic: Button
+    private lateinit var pointActivity: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +46,13 @@ class MainActivity : AppCompatActivity() {
             Intent(applicationContext, MusicService::class.java).also {
                 stopService(it)
             }
+        }
+
+        pointActivity = findViewById(R.id.pointActivity)
+
+        pointActivity.setOnClickListener{
+            val intent = Intent(this, RandomPointActivity::class.java)
+            startActivity(intent)
         }
 
     }
