@@ -16,6 +16,9 @@
         android:theme="@style/Theme.AppDev23S_A03"
         tools:targetApi="31">
         <activity
+            android:name=".FragmentActivity"
+            android:exported="false" />
+        <activity
             android:name=".RandomPointActivity"
             android:exported="false" />
         <activity

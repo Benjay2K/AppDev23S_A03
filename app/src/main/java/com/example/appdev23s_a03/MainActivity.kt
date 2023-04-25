@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var startMusic: Button
     private lateinit var stopMusic: Button
     private lateinit var pointActivity: Button
+    private lateinit var fragmentActivity: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        fragmentActivity = findViewById(R.id.fragmentActivity)
+        fragmentActivity.setOnClickListener{
+            val intent = Intent(this, FragmentActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onStart() {
