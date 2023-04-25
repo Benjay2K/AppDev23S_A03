@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 class FragmentActivity : AppCompatActivity() {
@@ -21,6 +20,19 @@ class FragmentActivity : AppCompatActivity() {
         fragmentContainer = findViewById(R.id.fragmentContainer)
         addFragmentButton = findViewById(R.id.addFragmentButton)
         removeFragmentButton = findViewById(R.id.removeFragmentButton)
+
+        val fragmentA = FragmentA("Name")
+        val fragmentB = FragmentB("Address")
+        fragmentA.arguments = intent.extras //or as a Bundle
+        fragmentB.arguments = intent.extras
+
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+
+        fragmentTransaction.add(R.id.linearLayoutFrag,fragmentA)
+        fragmentTransaction.add(R.id.linearLayoutFrag,fragmentB)
+
+        fragmentTransaction.commit()
 
         addFragmentButton.setOnClickListener {
             if (currentFragment == null) {
@@ -43,20 +55,7 @@ class FragmentActivity : AppCompatActivity() {
             }
         }
 
-        // create FragmentA instance and add it to the container
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainer, FragmentA())
-            .commit()
     }
+
 }
 
-override fun onFragmentEvent(message: String) {
-    // receive message from FragmentB and handle it
-    Toast.makeText(this, "Message received: $message", Toast.LENGTH_SHORT).show()
-}
-
-// function to be called in the MainActivity
-private fun sendMessageToFragment(message: String) {
-    val fragmentB = supportFragmentManager.findFragmentById(R.id.fragmentContainer) as FragmentB
-    fragmentB.sendMessage(message)
-}

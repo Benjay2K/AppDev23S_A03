@@ -8,22 +8,40 @@
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
-        <Button
-            android:id="@+id/addFragmentButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add" />
+        <LinearLayout
+            android:id="@+id/linearLayoutFrag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/removeFragmentButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remove" />
+            <LinearLayout
+                android:id="@+id/linearLayoutButtons"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/addFragmentButton"
+                    android:layout_width="188dp"
+                    android:layout_height="58dp"
+                    android:text="Add" />
+
+                <Button
+                    android:id="@+id/removeFragmentButton"
+                    android:layout_width="190dp"
+                    android:layout_height="61dp"
+                    android:text="Remove" />
+            </LinearLayout>
+            <fragment
+                android:id="@+id/fragment"
+                android:name="com.example.appdev23s_a03.FragmentA"
+                android:layout_width="match_parent" android:layout_height="100dp" />
+        </LinearLayout>
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

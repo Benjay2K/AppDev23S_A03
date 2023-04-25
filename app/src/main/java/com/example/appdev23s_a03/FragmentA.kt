@@ -17,7 +17,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [FragmentA.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentA : Fragment() {
+class FragmentA(private val text: String = "No Text"): Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,16 +34,14 @@ class FragmentA : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val textView = view?.findViewById<TextView>(R.id.textView)
+/*
+        val layout = inflater.inflate(R.layout.fragment_a,container, false)
+        val textView = layout.findViewById<TextView>(R.id.textView)
+        textView.text = text
 
-        arguments?.let {
-            val message = it.getString("message")
-            textView?.text = message
-        }
-
-        return view
+        return view*/
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_a, container, false)
+        return inflater.inflate(R.layout.fragment_a, container, false)
 
     }
 
